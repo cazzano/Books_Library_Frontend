@@ -302,7 +302,7 @@ export default {
       this.error = null;
       
       try {
-        const response = await fetch('https://bookslibrarybackend-production.up.railway.app/book');
+        const response = await fetch('https://bookslibrarybackend-production.up.railway.app/books');
         if (!response.ok) {
           throw new Error(`API request failed with status ${response.status}`);
         }
