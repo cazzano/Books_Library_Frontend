@@ -15,10 +15,7 @@
         </div>
         <div class="flex-none">
           <!-- Mobile menu toggle button -->
-          <button class="menu-toggle" @click="toggleMobileMenu">
-            <i class="fas fa-bars"></i>
-          </button>
-          
+         
           <ul class="menu menu-horizontal px-1 gap-2" :class="{ 'mobile-active': mobileMenuActive }">
             <li>
               <router-link
