@@ -14,7 +14,12 @@
           </a>
         </div>
         <div class="flex-none">
-          <ul class="menu menu-horizontal px-1 gap-2">
+          <!-- Mobile menu toggle button -->
+          <button class="menu-toggle" @click="toggleMobileMenu">
+            <i class="fas fa-bars"></i>
+          </button>
+          
+          <ul class="menu menu-horizontal px-1 gap-2" :class="{ 'mobile-active': mobileMenuActive }">
             <li>
               <router-link
                 to="/"
@@ -134,6 +139,16 @@
 <script>
 export default {
   name: "App",
+  data() {
+    return {
+      mobileMenuActive: false
+    }
+  },
+  methods: {
+    toggleMobileMenu() {
+      this.mobileMenuActive = !this.mobileMenuActive;
+    }
+  },
   mounted() {
     // Load Font Awesome from CDN if not already loaded
     if (!document.getElementById("font-awesome-css")) {
@@ -154,7 +169,33 @@ export default {
         "https://fonts.googleapis.com/css2?family=Scheherazade+New&display=swap";
       document.head.appendChild(link);
     }
-  },
+    
+    // Load responsive CSS
+    if (!document.getElementById("responsive-css")) {
+      const link = document.createElement("link");
+      link.id = "responsive-css";
+      link.rel = "stylesheet";
+      link.href = "/responsive.css"; // Make sure this path is correct
+      document.head.appendChild(link);
+    }
+    
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (event) => {
+      const navbar = document.querySelector('.navbar');
+      const isClickInside = navbar.contains(event.target);
+      
+      if (!isClickInside && this.mobileMenuActive) {
+        this.mobileMenuActive = false;
+      }
+    });
+    
+    // Close mobile menu on window resize (if switching to desktop)
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 767 && this.mobileMenuActive) {
+        this.mobileMenuActive = false;
+      }
+    });
+  }
 };
 </script>
 
@@ -347,5 +388,101 @@ export default {
 /* Add a subtle border highlight on active state for extra visibility */
 .btn:active {
   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+}
+
+/* Mobile menu toggle button style */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+/* Mobile-specific styles */
+@media (max-width: 767px) {
+  .menu-toggle {
+    display: block;
+  }
+  
+  .navbar .menu-horizontal {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #065f46; /* emerald-800 */
+    border-radius: 0 0 0.5rem 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    width: 100%;
+    padding: 1rem;
+    z-index: 20;
+  }
+  
+  .navbar .menu-horizontal.mobile-active {
+    display: flex;
+  }
+  
+  .navbar .menu-horizontal li {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+  
+  .navbar .menu-horizontal li a {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Responsive adjustments for content area */
+@media (max-width: 640px) {
+  .flex-grow.container {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  
+  .bg-white {
+    padding: 1rem;
+  }
+  
+  .border-dashed {
+    padding: 1rem;
+  }
+  
+  /* Footer responsive adjustments */
+  .footer .grid-flow-col {
+    grid-auto-flow: row;
+    gap: 1.5rem;
+  }
+  
+  .footer.p-10 {
+    padding: 2rem 1rem;
+  }
+}
+
+/* Font size responsiveness */
+@media (max-width: 480px) {
+  .text-2xl {
+    font-size: 1.25rem;
+  }
+  
+  .text-xl {
+    font-size: 1.1rem;
+  }
+  
+  /* Social buttons responsive spacing */
+  .footer .grid-flow-col.gap-6 {
+    gap: 0.5rem;
+  }
+}
+
+/* Ensure images don't overflow */
+img {
+  max-width: 100%;
+  height: auto;
 }
 </style>

@@ -1,0 +1,160 @@
+/* responsive.css - Responsive styling for Al-Baraka website */
+
+/* Base responsive container */
+.container {
+  width: 100%;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* Responsive breakpoints */
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+/* Mobile navigation adjustments */
+@media (max-width: 767px) {
+  .navbar .menu {
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #065f46; /* emerald-800 */
+    padding: 1rem;
+    border-radius: 0 0 0.5rem 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    display: none;
+    width: 100%;
+    z-index: 20;
+  }
+
+  .navbar .menu.active {
+    display: flex;
+  }
+
+  .navbar .menu-horizontal {
+    flex-direction: column;
+  }
+
+  .navbar .menu li {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .navbar .menu li a {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Mobile menu toggle button */
+  .menu-toggle {
+    display: block !important;
+  }
+
+  /* Hide desktop navigation items on mobile */
+  .navbar .flex-none ul.menu {
+    display: none;
+  }
+
+  /* Show mobile menu when toggled */
+  .navbar .flex-none ul.menu.mobile-active {
+    display: flex;
+  }
+}
+
+/* Footer responsive adjustments */
+@media (max-width: 640px) {
+  .footer .grid-flow-col {
+    grid-auto-flow: row;
+    gap: 1.5rem;
+  }
+
+  .footer .link {
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* Main content area responsive padding */
+@media (max-width: 640px) {
+  .flex-grow.container {
+    padding: 0.5rem;
+  }
+
+  .bg-white {
+    padding: 1rem;
+  }
+
+  .border-dashed {
+    padding: 1rem;
+  }
+}
+
+/* Social buttons responsive spacing */
+@media (max-width: 480px) {
+  .footer .grid-flow-col.gap-6 {
+    gap: 0.5rem;
+  }
+
+  .social-btn {
+    transform: scale(0.9);
+  }
+}
+
+/* Mobile hamburger menu styling */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+/* Transitions for responsiveness */
+.navbar,
+.menu,
+.btn,
+.footer,
+.container {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Font size responsiveness */
+@media (max-width: 640px) {
+  .text-2xl {
+    font-size: 1.25rem;
+  }
+
+  .text-xl {
+    font-size: 1.1rem;
+  }
+}
+
+/* Ensure images don't overflow */
+img {
+  max-width: 100%;
+  height: auto;
+}
