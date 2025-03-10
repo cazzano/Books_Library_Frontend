@@ -1,7 +1,8 @@
 <template>
   <div class="bg-gradient-to-b from-red-100 via-green-100 to-blue-200 min-h-screen flex flex-col items-center justify-between p-4 relative overflow-hidden">
-    <!-- Hamburger Menu - Only visible on mobile -->
+    <!-- Hamburger Menu - Only visible on mobile when drawer is closed -->
     <button 
+      v-if="!isDrawerOpen"
       class="hamburger-menu md:hidden fixed top-4 right-4 z-50 bg-white bg-opacity-70 rounded-lg p-2 shadow-md"
       @click="toggleDrawer"
       aria-label="Menu">
