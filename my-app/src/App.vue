@@ -33,15 +33,6 @@
             </li>
             <li>
               <router-link
-                to="/"
-                class="btn btn-home btn-sm bg-emerald-700 hover:bg-emerald-600 border-none text-white flex items-center gap-2 rounded-lg transition-all duration-300"
-              >
-                <i class="fas fa-home"></i> Home
-              </router-link>
-            </li>
-
-            <li>
-              <router-link
                 to="/about"
                 class="btn btn-about btn-sm bg-blue-700 hover:bg-blue-600 border-none text-white flex items-center gap-2 rounded-lg transition-all duration-300"
               >
