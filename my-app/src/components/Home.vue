@@ -339,6 +339,8 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&display=swap');
+
 /* Background maple leaf floating animation */
 @keyframes bgLeafFloat {
   0% {
@@ -375,7 +377,7 @@ export default {
 .hamburger-menu:hover {
   transform: scale(1.1);
 }
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&display=swap');
+
 
 .handwritten-quote {
   border: 1px solid #e2e8f0;
