@@ -234,3 +234,4 @@ export default {
 <style src="./button_mod.css"></style>
 <style src="./home.css"></style>
 <style src="./buttons.css"></style>
+<style src="./responsive.css"></style>
