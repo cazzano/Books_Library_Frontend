@@ -10,7 +10,7 @@
 /* Large tablets and small desktops */
 @media (max-width: 992px) {
   .book {
-    transform: scale(0.8) translate(-50%, -50%);
+    transform: scale(0.85) translate(-50%, -50%);
   }
 
   h1.text-4xl {
@@ -24,14 +24,15 @@
 
   /* Adjust bottom text position to prevent overlap */
   h2.absolute.bottom-2 {
-    bottom: -10px;
+    bottom: -15px;
   }
 }
 
 /* Medium tablets */
 @media (max-width: 768px) {
   .book {
-    transform: scale(0.7) translate(-50%, -50%);
+    /* Increased size from 0.7 to 0.75 */
+    transform: scale(0.75) translate(-50%, -50%);
   }
 
   h1.text-4xl {
@@ -46,17 +47,17 @@
 
   .relative.w-full.max-w-2xl.h-\[500px\] {
     height: 400px;
-    margin-bottom: 20px; /* Create more space below the book container */
+    margin-bottom: 25px; /* Create more space below the book container */
   }
 
   /* Move the text down further to avoid book overlap */
   h2.absolute.bottom-2 {
-    bottom: -25px;
+    bottom: -30px;
   }
 
   .flex.flex-wrap.justify-center.gap-5 {
     gap: 0.75rem;
-    margin-top: 30px; /* Add more margin to avoid overlap with bottom text */
+    margin-top: 35px; /* Add more margin to avoid overlap with bottom text */
   }
 
   .curved-button {
@@ -68,7 +69,12 @@
 /* Small tablets and large phones */
 @media (max-width: 640px) {
   .book {
-    transform: scale(0.6) translate(-50%, -50%);
+    /* Increased size from 0.6 to 0.7 */
+    transform: scale(0.7) translate(-50%, -50%);
+
+    /* Ensure book is centered */
+    left: 50% !important;
+    top: 50% !important;
   }
 
   h1.text-4xl {
@@ -81,14 +87,23 @@
   }
 
   .relative.w-full.max-w-2xl.h-\[500px\] {
-    height: 350px;
-    margin-bottom: 30px; /* Increase space below for text */
+    height: 380px; /* Increased height to accommodate larger book */
+    margin-bottom: 35px; /* Increase space below for text */
+
+    /* Ensure container is properly centered */
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 95%;
   }
 
   /* Fix the bottom text positioning */
   h2.absolute.bottom-2 {
-    bottom: -35px;
+    bottom: -40px;
     white-space: nowrap;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
   }
 
   /* Stack buttons on small screens */
@@ -96,7 +111,7 @@
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
-    margin-top: 40px; /* Increase margin-top to accommodate the displaced bottom text */
+    margin-top: 45px; /* Increase margin-top to accommodate the displaced bottom text */
   }
 
   .curved-button {
@@ -108,7 +123,8 @@
 /* Mobile phones */
 @media (max-width: 480px) {
   .book {
-    transform: scale(0.5) translate(-50%, -50%);
+    /* Increased size significantly from 0.5 to 0.65 */
+    transform: scale(0.65) translate(-50%, -50%);
   }
 
   h1.text-4xl {
@@ -122,15 +138,21 @@
   }
 
   .relative.w-full.max-w-2xl.h-\[500px\] {
-    height: 300px;
+    height: 360px; /* Increased height for larger book */
     position: relative;
-    margin-bottom: 40px; /* Increase bottom margin */
+    margin-bottom: 45px; /* Increase bottom margin */
   }
 
   h2.absolute.bottom-2 {
-    bottom: -40px;
+    bottom: -45px;
     font-size: 1rem;
     padding: 3px 10px;
+  }
+
+  /* Ensure book is perfectly centered on mobile */
+  .book.absolute {
+    left: 50% !important;
+    top: 50% !important;
   }
 
   /* Reduce the number of background maple leaves on small screens */
@@ -145,24 +167,25 @@
 
   /* Add more space for navigation buttons */
   .flex.flex-wrap.justify-center.gap-5.mb-8.mt-auto {
-    margin-top: 50px;
+    margin-top: 55px;
   }
 }
 
 /* Extra small phones */
 @media (max-width: 360px) {
   .book {
-    transform: scale(0.4) translate(-50%, -50%);
+    /* Increased size from 0.4 to 0.6 */
+    transform: scale(0.6) translate(-50%, -50%);
   }
 
   .relative.w-full.max-w-2xl.h-\[500px\] {
-    height: 250px;
-    margin-bottom: 50px; /* Increase bottom margin even more */
+    height: 330px; /* Increased for larger book display */
+    margin-bottom: 55px; /* Increase bottom margin even more */
   }
 
   /* Move text even further down */
   h2.absolute.bottom-2 {
-    bottom: -45px;
+    bottom: -50px;
     font-size: 0.875rem;
   }
 
@@ -177,7 +200,7 @@
 
   /* Give even more space for buttons */
   .flex.flex-wrap.justify-center.gap-5.mb-8.mt-auto {
-    margin-top: 60px;
+    margin-top: 65px;
   }
 }
 
@@ -188,12 +211,22 @@
   }
 
   .page-content .text-xl {
-    font-size: 0.9rem;
+    font-size: 1rem; /* Slightly larger for better readability */
   }
 
   .sparkling-stars .star {
     width: 3px;
     height: 3px;
+  }
+
+  /* Make the book pages more visible */
+  .page {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Enhance book appearance for better visibility */
+  .book-spine {
+    box-shadow: -3px 0 5px rgba(0, 0, 0, 0.2);
   }
 }
 
@@ -204,41 +237,43 @@
   }
 
   .book {
-    transform: scale(0.5) translate(-50%, -50%);
+    /* Increased size for better visibility */
+    transform: scale(0.6) translate(-50%, -50%);
   }
 
   .relative.w-full.max-w-2xl.h-\[500px\] {
-    height: 300px;
+    height: 320px;
   }
 
   /* Fix position of bottom text in landscape */
   h2.absolute.bottom-2 {
-    bottom: -30px;
+    bottom: -35px;
   }
 
   .flex.flex-wrap.justify-center.gap-5 {
     flex-direction: row;
-    margin-top: 40px; /* Increased to avoid overlap with the text */
+    margin-top: 45px; /* Increased to avoid overlap with the text */
   }
 }
 
 /* Fix for ultra-small devices in landscape */
 @media (max-height: 350px) and (orientation: landscape) {
   .relative.w-full.max-w-2xl.h-\[500px\] {
-    height: 200px;
-    margin-bottom: 40px;
+    height: 240px;
+    margin-bottom: 45px;
   }
 
   .book {
-    transform: scale(0.4) translate(-50%, -50%);
+    /* Increased size from 0.4 to 0.55 */
+    transform: scale(0.55) translate(-50%, -50%);
   }
 
   h2.absolute.bottom-2 {
-    bottom: -35px;
+    bottom: -40px;
   }
 
   .flex.flex-wrap.justify-center.gap-5 {
-    margin-top: 45px;
+    margin-top: 50px;
   }
 }
 
@@ -268,6 +303,12 @@
   .button-text {
     white-space: nowrap;
   }
+
+  /* Improve tap target size */
+  .button-text,
+  i.fas {
+    font-size: 1rem;
+  }
 }
 
 /* Fix for animation performance on mobile */
@@ -281,6 +322,16 @@
   }
 }
 
+/* Improve book contrast for better visibility */
+.book .page {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.page-content {
+  position: relative;
+  z-index: 2;
+}
+
 /* Alternative layout for very small height */
 @media (max-height: 600px) {
   .min-h-screen {
@@ -290,9 +341,9 @@
 
   /* Prevent overlap with "تحيا اسلام" text */
   .relative.w-full.max-w-2xl.h-\[500px\] {
-    margin-bottom: 40px;
+    margin-bottom: 45px;
     height: auto;
-    min-height: 250px;
+    min-height: 270px; /* Slightly increased for better book display */
   }
 }
 
@@ -319,6 +370,7 @@
   .page {
     background-color: #1e293b; /* slate-800 */
     color: #f8fafc; /* slate-50 */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Visible border in dark mode */
   }
 
   .page-content .text-blue-600 {
@@ -357,4 +409,12 @@
 @font-face {
   font-family: "ArabicFont";
   font-display: swap; /* Prevent FOIT (Flash of Invisible Text) */
+}
+
+/* Force centering for book at all screen sizes */
+.book.absolute {
+  left: 50% !important;
+  right: auto !important;
+  top: 50% !important;
+  bottom: auto !important;
 }
