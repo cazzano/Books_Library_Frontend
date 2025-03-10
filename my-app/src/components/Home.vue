@@ -186,6 +186,38 @@
         <!-- Added background for the bottom text as well -->
         <h2 class="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-xl text-green-600 font-arabic bg-white bg-opacity-70 px-4 py-1 rounded-lg">تحيا اسلام</h2>
      </div>
+
+<div class="handwritten-quote-container mt-12 mb-8 w-full flex justify-center">
+  <div class="handwritten-quote relative bg-white bg-opacity-70 p-4 rounded-lg shadow-md transform rotate-1">
+    <!-- Quotation marks -->
+    <span class="absolute -top-3 -left-2 text-4xl text-purple-700 font-serif">"</span>
+    
+    <!-- Handwritten text with animation -->
+    <p class="handwritten-text text-purple-800 text-xl mx-6 my-2">
+      We are giving the best 
+      <span class="font-semibold underline">Islamic Content</span>
+    </p>
+    
+    <!-- Closing quotation mark -->
+    <span class="absolute -bottom-6 -right-2 text-4xl text-purple-700 font-serif">"</span>
+    
+    <!-- Small decorative maple leaves around the quote -->
+    <div class="absolute -top-4 -right-4 transform rotate-45">
+      <svg viewBox="0 0 100 100" width="25" height="25" fill="currentColor" class="text-green-500">
+        <path d="M33.6,4.9c0,0,13.4,13.4,10.4,29.7c8.9-12.5,25.4-22.1,25.4-22.1s1.8,15.4-6.7,28.6c15.2-6.4,31.2-3.5,31.2-3.5s-9.4,14.9-24.5,18.8c15.8,2.7,26.5,13.8,26.5,13.8s-16.4,5.3-31.2-0.5c13,9.8,17.4,24.8,17.4,24.8s-17.7-3.2-28.3-14.6c5.4,14.7,2.4,30,2.4,30s-14-9.3-18.3-24.5c-2.9,15.7-13.9,26.3-13.9,26.3s-5.4-16.3,0.4-31c-9.9,12.9-24.9,17.2-24.9,17.2s3.1-17.6,14.6-28.1c-14.7,5.3-30,2.3-30,2.3s9.4-13.9,24.5-18.2c-15.8-3-26.4-14-26.4-14s16.3-5.2,31.1,0.4c-13-9.8-17.3-24.7-17.3-24.7s17.7,3.1,28.2,14.4c-5.3-14.7-2.3-29.9-2.3-29.9S29.3-10.4,33.6,4.9z"/>
+      </svg>
+    </div>
+    
+    <div class="absolute -bottom-4 -left-4 transform -rotate-15">
+      <svg viewBox="0 0 100 100" width="25" height="25" fill="currentColor" class="text-red-500">
+        <path d="M33.6,4.9c0,0,13.4,13.4,10.4,29.7c8.9-12.5,25.4-22.1,25.4-22.1s1.8,15.4-6.7,28.6c15.2-6.4,31.2-3.5,31.2-3.5s-9.4,14.9-24.5,18.8c15.8,2.7,26.5,13.8,26.5,13.8s-16.4,5.3-31.2-0.5c13,9.8,17.4,24.8,17.4,24.8s-17.7-3.2-28.3-14.6c5.4,14.7,2.4,30,2.4,30s-14-9.3-18.3-24.5c-2.9,15.7-13.9,26.3-13.9,26.3s-5.4-16.3,0.4-31c-9.9,12.9-24.9,17.2-24.9,17.2s3.1-17.6,14.6-28.1c-14.7,5.3-30,2.3-30,2.3s9.4-13.9,24.5-18.2c-15.8-3-26.4-14-26.4-14s16.3-5.2,31.1,0.4c-13-9.8-17.3-24.7-17.3-24.7s17.7,3.1,28.2,14.4c-5.3-14.7-2.3-29.9-2.3-29.9S29.3-10.4,33.6,4.9z"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
+
+
     </div>
     
     <!-- Navigation Buttons moved to bottom with Font Awesome icons -->
@@ -343,6 +375,72 @@ export default {
 .hamburger-menu:hover {
   transform: scale(1.1);
 }
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&display=swap');
+
+.handwritten-quote {
+  border: 1px solid #e2e8f0;
+  max-width: 400px;
+}
+
+.handwritten-text {
+  font-family: 'Caveat', cursive;
+  line-height: 1.4;
+  letter-spacing: 0.5px;
+  position: relative;
+}
+
+.handwritten-text::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: rgba(109, 40, 217, 0.2);
+}
+
+/* Responsive styles for the handwritten quote */
+@media (max-width: 768px) {
+  .handwritten-quote-container {
+    margin-top: 45px;
+  }
+  
+  .handwritten-quote {
+    max-width: 320px;
+    transform: rotate(0.5deg);
+  }
+  
+  .handwritten-text {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .handwritten-quote-container {
+    margin-top: 55px;
+  }
+  
+  .handwritten-quote {
+    max-width: 280px;
+  }
+  
+  .handwritten-text {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .handwritten-quote-container {
+    margin-top: 60px;
+  }
+  
+  .handwritten-quote {
+    padding: 10px;
+    max-width: 250px;
+  }
+}
+
+
 </style>
 
 <style src="./button_mod.css"></style>
