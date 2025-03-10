@@ -15,7 +15,10 @@
         </div>
         <div class="flex-none">
           <!-- Mobile menu toggle button -->
-         
+          <button @click="toggleMobileMenu" class="menu-toggle lg:hidden">
+            <i class="fas" :class="mobileMenuActive ? 'fa-times' : 'fa-bars'"></i>
+          </button>
+          
           <ul class="menu menu-horizontal px-1 gap-2" :class="{ 'mobile-active': mobileMenuActive }">
             <li>
               <router-link
@@ -50,6 +53,59 @@
             </li>
           </ul>
         </div>
+      </div>
+    </div>
+
+    <!-- Mobile drawer navigation - only shown when activated -->
+    <div 
+      class="mobile-drawer" 
+      :class="{ 'mobile-drawer-active': mobileMenuActive }"
+      @click.self="closeMobileMenu"
+    >
+      <div class="mobile-drawer-content">
+        <div class="flex justify-between items-center p-4 bg-emerald-800 text-white">
+          <span class="text-xl font-arabic">Al-Baraka Menu</span>
+          <button @click="toggleMobileMenu" class="text-white">
+            <i class="fas fa-times text-xl"></i>
+          </button>
+        </div>
+        <ul class="menu p-4 bg-white">
+          <li class="mb-2">
+            <router-link
+              to="/"
+              @click="closeMobileMenu"
+              class="btn btn-home w-full bg-emerald-700 hover:bg-emerald-600 border-none text-white flex items-center gap-2 rounded-lg transition-all duration-300"
+            >
+              <i class="fas fa-home"></i> Home
+            </router-link>
+          </li>
+          <li class="mb-2">
+            <router-link
+              to="/books"
+              @click="closeMobileMenu"
+              class="btn btn-home w-full bg-emerald-700 hover:bg-emerald-600 border-none text-white flex items-center gap-2 rounded-lg transition-all duration-300"
+            >
+              <i class="fas fa-book"></i> Books
+            </router-link>
+          </li>
+          <li class="mb-2">
+            <router-link
+              to="/about"
+              @click="closeMobileMenu"
+              class="btn btn-about w-full bg-blue-700 hover:bg-blue-600 border-none text-white flex items-center gap-2 rounded-lg transition-all duration-300"
+            >
+              <i class="fas fa-info-circle"></i> About
+            </router-link>
+          </li>
+          <li>
+            <a
+              @click="closeMobileMenu"
+              class="btn btn-contact w-full bg-red-700 hover:bg-red-600 border-none text-white flex items-center gap-2 rounded-lg transition-all duration-300"
+            >
+              <i class="fas fa-envelope"></i> Contact
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
 
@@ -144,6 +200,12 @@ export default {
   methods: {
     toggleMobileMenu() {
       this.mobileMenuActive = !this.mobileMenuActive;
+      // Prevent body scrolling when drawer is open
+      document.body.style.overflow = this.mobileMenuActive ? 'hidden' : '';
+    },
+    closeMobileMenu() {
+      this.mobileMenuActive = false;
+      document.body.style.overflow = '';
     }
   },
   mounted() {
@@ -176,20 +238,17 @@ export default {
       document.head.appendChild(link);
     }
     
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', (event) => {
-      const navbar = document.querySelector('.navbar');
-      const isClickInside = navbar.contains(event.target);
-      
-      if (!isClickInside && this.mobileMenuActive) {
-        this.mobileMenuActive = false;
+    // Close mobile menu when window resizes to larger screen
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 767 && this.mobileMenuActive) {
+        this.closeMobileMenu();
       }
     });
     
-    // Close mobile menu on window resize (if switching to desktop)
-    window.addEventListener('resize', () => {
-      if (window.innerWidth > 767 && this.mobileMenuActive) {
-        this.mobileMenuActive = false;
+    // Close mobile menu with escape key
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && this.mobileMenuActive) {
+        this.closeMobileMenu();
       }
     });
   }
@@ -396,6 +455,53 @@ export default {
   color: white;
   cursor: pointer;
   padding: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.menu-toggle:hover {
+  transform: scale(1.1);
+}
+
+/* Hamburger menu icon transition */
+.menu-toggle .fa-bars,
+.menu-toggle .fa-times {
+  transition: all 0.3s ease;
+}
+
+/* Mobile drawer navigation */
+.mobile-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 30;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.mobile-drawer-active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.mobile-drawer-content {
+  position: fixed;
+  top: 0;
+  right: -280px;
+  width: 280px;
+  height: 100%;
+  background-color: white;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  transition: right 0.3s ease;
+  overflow-y: auto;
+  z-index: 31;
+}
+
+.mobile-drawer-active .mobile-drawer-content {
+  right: 0;
 }
 
 /* Mobile-specific styles */
@@ -406,6 +512,10 @@ export default {
   
   .navbar .menu-horizontal {
     display: none;
+  }
+  
+  .navbar .menu-horizontal.mobile-active {
+    display: flex;
     position: absolute;
     top: 100%;
     right: 0;
@@ -416,10 +526,6 @@ export default {
     width: 100%;
     padding: 1rem;
     z-index: 20;
-  }
-  
-  .navbar .menu-horizontal.mobile-active {
-    display: flex;
   }
   
   .navbar .menu-horizontal li {
@@ -481,5 +587,16 @@ export default {
 img {
   max-width: 100%;
   height: auto;
+}
+
+/* Add smooth transition for mobile drawer */
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slideOut {
+  from { transform: translateX(0); }
+  to { transform: translateX(100%); }
 }
 </style>

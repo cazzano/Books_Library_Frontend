@@ -36,51 +36,49 @@
 
 /* Mobile navigation adjustments */
 @media (max-width: 767px) {
-  .navbar .menu {
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background-color: #065f46; /* emerald-800 */
-    padding: 1rem;
-    border-radius: 0 0 0.5rem 0.5rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    display: none;
-    width: 100%;
-    z-index: 20;
-  }
-
-  .navbar .menu.active {
-    display: flex;
-  }
-
+  /* Hide desktop menu on mobile */
   .navbar .menu-horizontal {
-    flex-direction: column;
+    display: none;
   }
 
-  .navbar .menu li {
-    width: 100%;
-    margin-bottom: 0.5rem;
-  }
-
-  .navbar .menu li a {
-    width: 100%;
-    justify-content: center;
-  }
-
-  /* Mobile menu toggle button */
+  /* Show mobile menu toggle button */
   .menu-toggle {
     display: block !important;
   }
 
-  /* Hide desktop navigation items on mobile */
-  .navbar .flex-none ul.menu {
-    display: none;
+  /* Mobile menu toggle animation */
+  .menu-toggle .fa-bars {
+    display: inline-block;
+    transition: transform 0.3s ease;
   }
 
-  /* Show mobile menu when toggled */
-  .navbar .flex-none ul.menu.mobile-active {
+  .menu-toggle:hover .fa-bars {
+    transform: rotate(90deg);
+  }
+
+  /* Mobile drawer styling - side drawer navigation */
+  .mobile-drawer {
+    display: block;
+  }
+
+  /* Prevent scrolling when drawer is open */
+  body.drawer-open {
+    overflow: hidden;
+  }
+
+  /* Button styling in mobile drawer */
+  .mobile-drawer .btn {
+    width: 100%;
+    margin-bottom: 0.5rem;
     display: flex;
+    justify-content: flex-start;
+    padding: 0.75rem 1rem;
+  }
+
+  /* Handle overflow in mobile drawer */
+  .mobile-drawer-content {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 }
 
@@ -131,6 +129,12 @@
   color: white;
   cursor: pointer;
   padding: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+/* Hamburger icon rotation effect */
+.menu-toggle:hover {
+  transform: rotate(10deg);
 }
 
 /* Transitions for responsiveness */
@@ -157,4 +161,27 @@
 img {
   max-width: 100%;
   height: auto;
+}
+
+/* Mobile drawer additional styles */
+.mobile-drawer .mobile-drawer-content {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Animation for drawer opening */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Ensure the mobile drawer doesn't appear on desktop */
+@media (min-width: 768px) {
+  .mobile-drawer {
+    display: none !important;
+  }
 }
