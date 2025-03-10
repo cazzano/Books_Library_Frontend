@@ -185,7 +185,7 @@
         
         <!-- Added background for the bottom text as well -->
         <h2 class="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-xl text-green-600 font-arabic bg-white bg-opacity-70 px-4 py-1 rounded-lg">تحيا اسلام</h2>
-      </div>
+     </div>
     </div>
     
     <!-- Navigation Buttons moved to bottom with Font Awesome icons -->

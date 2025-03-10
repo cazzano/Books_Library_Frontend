@@ -92,9 +92,9 @@
 /* Small tablets and large phones */
 @media (max-width: 640px) {
   .book {
-    transform: scale(0.75) translate(-48%, -50%); /* Smaller book size for mobile */
+    transform: scale(0.7) translate(-48%, -50%); /* Changed from 0.75 to 0.7 - Smaller book size for mobile */
     /* Ensure book is centered */
-    left: 50% !important;
+    left: 30% !important;
     top: 50% !important;
   }
 
@@ -156,7 +156,7 @@
 /* Extra small devices (phones) */
 @media (max-width: 480px) {
   .book {
-    transform: scale(0.65) translate(-48%, -50%); /* Even smaller book size */
+    transform: scale(0.62) translate(-48%, -50%); /* Changed from 0.65 to 0.62 - Even smaller book size */
   }
 
   h1.text-4xl {
@@ -213,7 +213,7 @@
 /* Landscape orientation adjustments for mobile devices */
 @media (max-height: 480px) and (orientation: landscape) {
   .book {
-    transform: scale(0.6) translate(-48%, -50%);
+    transform: scale(0.58) translate(-48%, -50%); /* Changed from 0.6 to 0.58 */
   }
 
   .relative.w-full.max-w-2xl.h-\[500px\] {
