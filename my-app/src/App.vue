@@ -44,14 +44,19 @@
                 <i class="fas fa-info-circle"></i> About
               </router-link>
             </li>
+
             <li>
-              <a
-                class="btn btn-contact btn-sm bg-red-700 hover:bg-red-600 border-none text-white flex items-center gap-2 rounded-lg transition-all duration-300"
+              <router-link
+                to="/contact"
+                class="btn btn-about btn-sm bg-blue-700 hover:bg-blue-600 border-none text-white flex items-center gap-2 rounded-lg transition-all duration-300"
               >
                 <i class="fas fa-envelope"></i> Contact
-              </a>
+              </router-link>
             </li>
-          </ul>
+
+
+
+         </ul>
         </div>
       </div>
     </div>
@@ -97,14 +102,20 @@
               <i class="fas fa-info-circle"></i> About
             </router-link>
           </li>
-          <li>
-            <a
+
+    <li class="mb-2">
+            <router-link
+              to="/contact"
               @click="closeMobileMenu"
-              class="btn btn-contact w-full bg-red-700 hover:bg-red-600 border-none text-white flex items-center gap-2 rounded-lg transition-all duration-300"
+              class="btn btn-about w-full bg-blue-700 hover:bg-blue-600 border-none text-white flex items-center gap-2 rounded-lg transition-all duration-300"
             >
               <i class="fas fa-envelope"></i> Contact
-            </a>
+            </router-link>
           </li>
+
+
+
+
         </ul>
       </div>
     </div>
