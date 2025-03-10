@@ -1,86 +1,5 @@
 <template>
   <div class="bg-gradient-to-b from-red-100 via-green-100 to-blue-200 min-h-screen flex flex-col items-center justify-between p-4 relative overflow-hidden">
-    <!-- Hamburger Menu - Only visible on mobile when drawer is closed -->
-    <button 
-      v-if="!isDrawerOpen"
-      class="hamburger-menu md:hidden fixed top-4 right-4 z-50 bg-white bg-opacity-70 rounded-lg p-2 shadow-md"
-      @click="toggleDrawer"
-      aria-label="Menu">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
-           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
-           class="text-green-600">
-        <line x1="3" y1="12" x2="21" y2="12"></line>
-        <line x1="3" y1="6" x2="21" y2="6"></line>
-        <line x1="3" y1="18" x2="21" y2="18"></line>
-      </svg>
-    </button>
-    
-    <!-- Mobile Navigation Drawer -->
-    <div 
-      class="mobile-drawer fixed top-0 right-0 h-full w-64 bg-white bg-opacity-90 shadow-lg z-40 transform transition-transform duration-300 ease-in-out"
-      :class="{ 'translate-x-0': isDrawerOpen, 'translate-x-full': !isDrawerOpen }">
-      
-      <!-- Drawer Header -->
-      <div class="flex justify-between items-center p-4 border-b border-gray-200">
-        <h3 class="text-xl font-bold text-green-600 font-arabic">دین اسلام</h3>
-        <button @click="toggleDrawer" class="text-gray-600" aria-label="Close menu">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
-               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
-        </button>
-      </div>
-      
-      <!-- Drawer Navigation -->
-      <nav class="p-4">
-        <ul class="space-y-4">
-          <li>
-            <a href="#" class="flex items-center p-2 rounded-lg hover:bg-green-100 transition-colors duration-200">
-              <i class="fas fa-home mr-3 text-green-600"></i>
-              <span>Home</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="flex items-center p-2 rounded-lg hover:bg-green-100 transition-colors duration-200">
-              <i class="fas fa-book mr-3 text-green-600"></i>
-              <span>Books</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="flex items-center p-2 rounded-lg hover:bg-green-100 transition-colors duration-200">
-              <i class="fas fa-info-circle mr-3 text-green-600"></i>
-              <span>About Us</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="flex items-center p-2 rounded-lg hover:bg-green-100 transition-colors duration-200">
-              <i class="fas fa-envelope mr-3 text-green-600"></i>
-              <span>Contact Us</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="flex items-center p-2 rounded-lg hover:bg-green-100 transition-colors duration-200">
-              <i class="fas fa-mosque mr-3 text-green-600"></i>
-              <span>Prayer Times</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="flex items-center p-2 rounded-lg hover:bg-green-100 transition-colors duration-200">
-              <i class="fas fa-quran mr-3 text-green-600"></i>
-              <span>Quran</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-    
-    <!-- Overlay that appears when drawer is open -->
-    <div 
-      v-if="isDrawerOpen" 
-      class="fixed inset-0 bg-black bg-opacity-50 z-30"
-      @click="toggleDrawer"></div>
-      
     <!-- Background maple leaf pattern with transparency -->
     <div class="background-maple-pattern absolute inset-0 z-0 opacity-20">
       <div v-for="n in 20" :key="`bg-maple-${n}`" class="absolute" :style="getRandomBackgroundLeafStyle()">
@@ -245,20 +164,11 @@ export default {
   name: 'Home',
   data() {
     return {
-      isDrawerOpen: false
+      // Removed isDrawerOpen
     }
   },
   methods: {
-    toggleDrawer() {
-      this.isDrawerOpen = !this.isDrawerOpen;
-      
-      // Prevent body scrolling when drawer is open
-      if (this.isDrawerOpen) {
-        document.body.style.overflow = 'hidden';
-      } else {
-        document.body.style.overflow = '';
-      }
-    },
+    // Removed toggleDrawer method
     handleAboutClick() {
       // Add your about page navigation logic here
       // For example: this.$router.push('/about');
@@ -360,25 +270,6 @@ export default {
   }
 }
 
-/* Mobile drawer styles */
-.mobile-drawer {
-  height: 100vh;
-  overflow-y: auto;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' opacity='0.05'%3E%3Cpath d='M33.6,4.9c0,0,13.4,13.4,10.4,29.7c8.9-12.5,25.4-22.1,25.4-22.1s1.8,15.4-6.7,28.6c15.2-6.4,31.2-3.5,31.2-3.5s-9.4,14.9-24.5,18.8c15.8,2.7,26.5,13.8,26.5,13.8s-16.4,5.3-31.2-0.5c13,9.8,17.4,24.8,17.4,24.8s-17.7-3.2-28.3-14.6c5.4,14.7,2.4,30,2.4,30s-14-9.3-18.3-24.5c-2.9,15.7-13.9,26.3-13.9,26.3s-5.4-16.3,0.4-31c-9.9,12.9-24.9,17.2-24.9,17.2s3.1-17.6,14.6-28.1c-14.7,5.3-30,2.3-30,2.3s9.4-13.9,24.5-18.2c-15.8-3-26.4-14-26.4-14s16.3-5.2,31.1,0.4c-13-9.8-17.3-24.7-17.3-24.7s17.7,3.1,28.2,14.4c-5.3-14.7-2.3-29.9-2.3-29.9S29.3-10.4,33.6,4.9z'/%3E%3C/svg%3E");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.hamburger-menu {
-  transition: transform 0.2s ease;
-}
-
-.hamburger-menu:hover {
-  transform: scale(1.1);
-}
-
-
 .handwritten-quote {
   border: 1px solid #e2e8f0;
   max-width: 400px;
@@ -441,8 +332,6 @@ export default {
     max-width: 250px;
   }
 }
-
-
 </style>
 
 <style src="./button_mod.css"></style>
