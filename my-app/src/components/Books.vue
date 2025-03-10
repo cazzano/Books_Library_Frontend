@@ -384,3 +384,4 @@ export default {
   overflow: hidden;
 }
 </style>
+<style src="./book_response.css"></style>
