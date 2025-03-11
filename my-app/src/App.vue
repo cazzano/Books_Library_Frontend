@@ -208,6 +208,15 @@ export default {
       mobileMenuActive: false
     }
   },
+metaInfo() {
+    return {
+      title: 'Al-Baraka - Islamic Knowledge Resource',
+      titleTemplate: '%s | Al-Baraka',
+      meta: [
+        { vmid: 'description', name: 'description', content: 'Al-Baraka - Islamic knowledge and resources for spiritual guidance and education' }
+      ]
+    }
+  },
   methods: {
     toggleMobileMenu() {
       this.mobileMenuActive = !this.mobileMenuActive;
@@ -265,6 +274,9 @@ export default {
   }
 };
 </script>
+
+  
+
 
 <style>
 /* Button click animation with more visible circles */
